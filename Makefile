@@ -1,44 +1,35 @@
-# Directories
+NAME = libft.a
+
 SRC_DIR = src
-TEST_DIR = tests
+OBJ_DIR = obj
+INCLUDE_DIR = include
 
-# Compiler and flags
+SRC = $(wildcard $(SRC_DIR)/*.c)
+OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+
 CC = gcc
-CFLAGS = -I$(SRC_DIR)  # This tells GCC to look for header files in the src directory
+CFLAGS = -Wall -Wextra -Werror -I $(INCLUDE_DIR)
+AR = ar rcs
+RM = rm -f
 
-# Source files
-SRC_FILES = $(SRC_DIR)/ft_isalpha.c
-TEST_FILES = $(TEST_DIR)/is_alpha.c
+.PHONY: all clean fclean re
 
-# Object files
-SRC_OBJS = $(SRC_FILES:.c=.o)
-TEST_OBJS = $(TEST_FILES:.c=.o)
+all: $(NAME)
 
-# Target executable
-TARGET = $(TEST_DIR)/test_is_alpha
+$(NAME): $(OBJ)
+	$(AR) $(NAME) $(OBJ)
 
-# Default target
-all: $(TARGET)
-
-# Compile
-$(TARGET): $(SRC_OBJS) $(TEST_OBJS)
-	$(CC) -o $(TARGET) $(SRC_OBJS) $(TEST_OBJS)
-
-# Compile source files
-$(SRC_DIR)/%.o: $(SRC_DIR)/%.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Compile test files
-$(TEST_DIR)/%.o: $(TEST_DIR)/%.c
-	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
 
-# Clean
 clean:
-	rm -f $(SRC_OBJS) $(TEST_OBJS) $(TARGET)
+	$(RM) $(OBJ)
+	$(RM) -r $(OBJ_DIR)
 
-# Run tests
-run: $(TARGET)
-	./$(TARGET)
+fclean: clean
+	$(RM) $(NAME)
 
-.PHONY: all clean run
-
+re: fclean all
