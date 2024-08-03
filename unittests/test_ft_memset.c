@@ -1,14 +1,4 @@
-#include <stdio.h>
-#include <string.h>
-#include <assert.h>
 #include "test_framework.h"
-
-// Helper macro to print test results
-#define ASSERT_EQUAL_MEM(expected, actual, size) do { \
-    if (memcmp(expected, actual, size) != 0) { \
-        fprintf(stderr, "Assertion failed: Memory blocks are not equal.\n"); \
-    } \
-} while(0)
 
 void test_memset_basic_functionality() {
     char buffer[10];
