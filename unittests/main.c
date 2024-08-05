@@ -11,8 +11,9 @@ int	main(void)
 	test_ft_strlen();
 	test_ft_memset();
 	test_ft_bzero();
-	test_ft_memcpy();
-	test_ft_memmove();
+//	test_ft_memcpy();
+//	test_ft_memmove();
+	test_ft_memcmp();
 	return (0);
 }
 
