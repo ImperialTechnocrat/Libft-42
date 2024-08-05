@@ -35,5 +35,6 @@ int     test_ft_bzero(void);
 int     test_ft_memcpy(void);
 int     test_ft_memmove(void);
 int     test_ft_memcmp(void);
+int     test_ft_memchr(void);
 
 #endif

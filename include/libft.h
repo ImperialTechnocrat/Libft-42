@@ -12,6 +12,7 @@ int		ft_memcmp(const void* str1, const void* str2, size_t num);
 void*	ft_memmove(void* dest, const void* src, size_t num);
 void*	ft_memset(void* ptr, int value, size_t num);
 void*	ft_memcpy(void* dest, const void* src, size_t num); 
+void*	ft_memchr(const void* str, int c, size_t num);
 void	ft_bzero(void* s, size_t num);
 size_t	ft_strlen(const char* s);
 
