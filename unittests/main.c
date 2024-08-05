@@ -15,6 +15,8 @@ int	main(void)
 //	test_ft_memmove();
 	test_ft_memcmp();
 	test_ft_memchr();
+	test_ft_toupper();
+	test_ft_tolower();
 	return (0);
 }
 

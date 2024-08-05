@@ -9,6 +9,13 @@
 #define ASSERT_TRUE(cond) do { if (!(cond)) printf("Test failed: %s\n", #cond); } while (0)
 #define ASSERT_FALSE(cond) do { if ((cond)) printf("Test failed: %s\n", #cond); } while (0)
 #define RUN_TEST(test) do { printf("Running %s...\n", #test); test(); } while (0)
+
+#define ASSERT_EQUAL(actual, expected) \
+    if ((actual) != (expected)) { \
+        printf("%s failed: expected %d but got %d\n", __func__, (expected), (actual)); \
+        return 1; \
+    }
+
 // Helper macro to print test results
 #define ASSERT_EQUAL_MEM(expected, actual, size) do { \
     if (memcmp(expected, actual, size) != 0) { \
@@ -22,6 +29,11 @@
     } \
 } while (0)
 
+#define ASSERT_EQUAL_PTR(actual, expected) \
+    if ((actual) != (expected)) { \
+        printf("%s failed: expected %p but got %p\n", __func__, (expected), (actual)); \
+        return 1; \
+    }
 
 
 int		test_isalpha(void);
@@ -36,5 +48,7 @@ int     test_ft_memcpy(void);
 int     test_ft_memmove(void);
 int     test_ft_memcmp(void);
 int     test_ft_memchr(void);
+int     test_ft_toupper(void);
+int     test_ft_tolower(void);
 
 #endif
